@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>ISN-charles stagnitto/dugas</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">  
+  </head>
+
+  <body>
+    <div class="grid-container">
+      <div class="all-header">
+        <header>
+          <div id="logo1">
+            <img src="https://cdn.glitch.com/8313f79a-d2e4-49e2-a947-440d9453b1f2%2Fisn.png?1557432682324" alt="logo" />
+          </div>
+          <div id="titrelogo">
+            <img src="https://cdn.glitch.com/8313f79a-d2e4-49e2-a947-440d9453b1f2%2Fgames_news_620x320-3(1).png?1557057646656" alt="logo" />
+          </div>
+          <div id="logo2"><img src="https://cdn.glitch.com/8313f79a-d2e4-49e2-a947-440d9453b1f2%2FSans%20titre%201.png?1557387510743" alt="logo"/></div>
+        </header>
+
+        <div class="sub-header">
+          <nav>
+            <ul>
+              <li><a href="index.html" target="_self">Battleship</a></li>
+              <li><a href="dugas.html" target="_self">Partie Dugas</a></li>
+              <li><a href="stagnitto.html" target="_self">Partie Stagnitto</a></li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+      <div class="aside-left"><!--définition du côté gauche pour y faire une colone grise et pour placement-->
+        <div class="nav-left">
+        <ol>
+  <li><a href="#collage">Système anti-collage</a></li>
+  <li><a href="#manuel">Placement manuel</a></li>
+  <li><a href="#auto">Placement automatique</a></li>
+  <li><a href="#tir">Mode tir</a></li>
+        </ol>           
+        </div>
+      </div>
+      <div class="aside-right"><!--définition du côté droite pour y faire une colone grise et pour placement-->
+      </div>
+      <article>
+        <h2>
+          Objectifs et axes de travail :
+        </h2>
+        <h3 style ="font-size:1em">
+          1) optimisation et amélioration du menu accueil
+        </h3>
+        <ul>
+          <li>refonte du menu règle</li>
+          <li>création des accès aux nouveaux modes et aux différentes difficultés</li>
+        </ul>
+        <h3 style ="font-size:1em">
+          2) création et préparation de la plateforme pour l'IA
+        </h3>
+        <ul>
+          <li>création du stystème anti-collage et amélioration du système anti-collision des bateaux</li>
+          <li>système de placement des bateaux en manuel</li>
+          <li>système de placement des bateaux en automatique</li>
+          <li>réagencement de la fonction qui permet de tirer </li>
+        </ul>
+        <h3 style ="font-size:1em">
+          3) finalisation du jeu
+        </h3>
+        <ul>
+          <li> création d'un nouveau mode 1 VS 1 avec le système anti-collage</li>
+          <li>adaptation des améliorations de 1 VS ORDI pour les autres programmes</li>
+        </ul>
+        
+        <h2>
+          Présentation détaillée de la partie d'adaptation pour la plateforme IA
+        </h2>
+        <div id="collage">
+        <h3 style ="font-size:1em">
+          1) la fonction blockaround
+        </h3>
+        
+        <p>
+          Le but de cette fonction est de rendre les cases autour des bateaux inaccessibles, et donc d'empêcher que les bateaux ne puissent être placés collés.
+        </p>
+        <p>
+          Son fonctionnement est de détecter une case sur laquelle se situe un bateau, et de mettre toutes les cases qui sont disponibles autour à -10. Il est donc nécessaire de vérifier les différentes possibilités et notamment éviter que les autres cases du bateau ne soient à -10 aussi. Le plus gros problème a été de créer différents scénarios pour éviter au programme de remplir des cases en dehors du plateau et de faire une erreur. 
+        </p>
+        <p>
+         Ce nombre a été choisi pour permettre de différencier une case interdite (à -10) d'une cases avec un bateau (entre 0 et 5). De plus la valeur -10 permet que en cas de superposition avec un bateau, la valeur ne peut pas être égale à une case vide ou une case avec un bateaux, et donc permet la vérification que je vais présenter plus loin. 
+        </p>
+        <p align="left"><img src="https://cdn.glitch.com/8313f79a-d2e4-49e2-a947-440d9453b1f2%2Fimageblockaround.PNG?1557409512891" alt="blockaround" width="800"/></p>
+      
+        <p>
+          De plus la fonction permet de créer une image sur les cases interdites pour informer de l'emplacement de ces cases. Pour cela elle détecte les cases à -10 et y met une image.
+        </p>
+        <p align="center"><img src="https://cdn.glitch.com/8313f79a-d2e4-49e2-a947-440d9453b1f2%2Fingameblockaround.PNG?1557409742254" alt="ingameblockaround" width="500"/></p>
+          </div>
+        <div id="manuel">
+        <h3 style ="font-size:1em">
+          2) Le placement manuel
+        </h3>
+        <p>
+          Il a en effet été nécessaire d'adapter le programme de placement classique pour y intégrer cette nouvelle fonctionnalité.
+        </p>
+        <p>
+          Pour cela je vérifie tout d'abord que la case choisie ne se trouve ni sur un beteau existant, ni sur une case interdite, et que le bateau en fonction de l'orientation rentre sur le plateau.
+        </p>
+        <p>
+          Ensuite, j'ai modifié la fonction "vérifinterne()" qui s'exécute et va vérifier que les bateaux ne s'empilent pas et ne tombent pas sur une case interdite. Ce porgramme vérifie toutes les cases à la recherche d'anomalie. Il va vérifier qu'il n'y a pas de cases entre -9 et -2,ce qui voudrait dire qu'un bateau s'est ajouté sur une case à -10. De plus il évite que deux bateaux ne s'empilent, en effet en fonction du n et de la valeur possible du bateau correspondant, il vérifie qu'une case ne puisse pas dépasser la valeur de ce bateau.
+        </p>
+        <p>
+          Pour finir chaque placement, la fonction "blockaround()" est appelée et va venir définir les cases interdites autour du nouveau bateau qui a été crée.
+        </p>
+      <p align="center"><img src="https://cdn.glitch.com/8313f79a-d2e4-49e2-a947-440d9453b1f2%2Fplacement.png?1557429906782" alt="blockaround" width="700"/><img src="https://cdn.glitch.com/8313f79a-d2e4-49e2-a947-440d9453b1f2%2Fverifinterne.png?1557430278172" alt="verifinterne" width="300"/></p>
+        </div>
+        <div id="auto">
+        <h3 style ="font-size:1em">
+          3) Le placement automatique
+        </h3>
+        <p>
+          Maintenant concernant, le placement automatique de l'ordinateur, j'ai repris le placement en manuel, mais en rajoutant quelques fonctions permettant de rendre ce processus aléatoire et automatique.
+        </p>
+        <p>
+          orientationIA() est un simple programme qui décide si l'IA place le bateau en vertical ou horizontal
+        </p>
+        <p>
+          La fonction importante ici, est verifinterne() combinée avec blockaroundIA() et qui marchent de la même manière que dans le placement manuel. Si l'emplacement est indisponible, ils renvoient l'info et le programme annule l'action. C'est ainsi qu'en cas d'erreur le processus va recommencer jusqu'à tomber sur un emplacement vide pour ensuite passer au bateau suivant.
+        </p>
+      <p align="center"><img src="https://cdn.glitch.com/8313f79a-d2e4-49e2-a947-440d9453b1f2%2Fplacement%20ia.png?1557430833955" alt="blockaround" width="600"/><img src="https://cdn.glitch.com/8313f79a-d2e4-49e2-a947-440d9453b1f2%2ForientationIA.png?1557430833842" alt="orientationIA" width="400"/></p>           
+        </div>
+        <div id="tir">
+        <h3 style ="font-size:1em">
+          4) La refonte du mode de tir
+        </h3>
+        <p>
+          Il a été nécessaire de revoir la fonction de tir originelle, elle était imbriquée dans une fonction globale contenant le placement et le tir. Mais du fait que la fonction du tir de l'IA devait être séparée : il a été nécessaire de fractionner les différentes actions. 
+        </p>
+        <p>
+          Pour m'assurer du bon fonctionnement global du programme et pour pouvoir rendre une plateforme optimale pour mon collègue qui fait l'IA, j'ai fait en sorte que l'ordinateur joue aussi, mais de façon totalement aléatoire.
+        </p>
+        <p align="center"><img src="https://cdn.glitch.com/8313f79a-d2e4-49e2-a947-440d9453b1f2%2Ftir.png?1557432394338" alt="tir" width="500"/><img src="https://cdn.glitch.com/8313f79a-d2e4-49e2-a947-440d9453b1f2%2Ftir%20IA%20al%C3%A9atoire.png?1557432115112" alt="tiraleatoire" width="500"/></p>
+        <p>
+          Mais pour que le programme marche, il a été nécessaire de revoir les fonctions qui faisaient tourner le jeu, et notamment le fonctionnement des boutons.
+        </p>
+         <p align="left"><img src="https://cdn.glitch.com/8313f79a-d2e4-49e2-a947-440d9453b1f2%2Fconstruction.png?1557432115220" alt="construction" width="700"/><img src="https://cdn.glitch.com/8313f79a-d2e4-49e2-a947-440d9453b1f2%2Fconstruction234.png?1557432115315" alt="construction234" width="1000"/><img src="https://cdn.glitch.com/8313f79a-d2e4-49e2-a947-440d9453b1f2%2Fconstruction56.png?1557432115057" alt="construction56" width="700"/></p>                
+        </div>
+      </article>
+    </div>
+  </body>
+
+</html>

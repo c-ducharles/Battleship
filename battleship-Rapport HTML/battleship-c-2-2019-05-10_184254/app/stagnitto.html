@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>ISN-charles stagnitto/dugas</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">  <!--introduction des liens pour les polices d'écriture-->
+  </head>
+
+  <body>
+    <div class="grid-container">
+      <div class="all-header">
+        <header>
+          <div id="logo1">
+            <img src="https://cdn.glitch.com/8313f79a-d2e4-49e2-a947-440d9453b1f2%2Fisn.png?1557432682324" alt="logo" />
+          </div>
+          <div id="titrelogo">
+            <img src="https://cdn.glitch.com/8313f79a-d2e4-49e2-a947-440d9453b1f2%2Fgames_news_620x320-3(1).png?1557057646656" alt="logo" />
+          </div>
+          <div id="logo2"><img src="https://cdn.glitch.com/8313f79a-d2e4-49e2-a947-440d9453b1f2%2FSans%20titre%201.png?1557387510743" alt="logo"/></div>
+        </header>
+
+        <div class="sub-header">
+          <nav>
+            <ul>
+              <li><a href="index.html" target="_self">Battleship</a></li>
+              <li><a href="dugas.html" target="_self">Partie Dugas</a></li>
+              <li><a href="stagnitto.html" target="_self">Partie Stagnitto</a></li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+      <div class="aside-left"><!--définition du côté gauche pour y faire une colone grise et pour placement-->
+      </div>
+      <div class="aside-right"><!--définition du côté droite pour y faire une colone grise et pour placement-->
+      </div>
+    <article>
+      <h2>
+          Objectifs et axes de travail :
+        </h2>
+      <h3 style ="font-size:1em">
+          1) Optimisation du nombre d'attaques
+        </h3>
+      <ul>
+        <li>Creation d'une fonction permettant de tirez une case sur deux</li>
+      </ul>
+      <h3 style ="font-size:1em">
+          2) Attaque Inteligente:
+        </h3>
+      <ul>
+        <li>Création d'un algorithme pour achevé les bateaux repérer</li>
+      </ul>
+      <h2>
+        Présentation détaillée de la partie algorithmique de l'IA
+      </h2>
+      <p>
+        La fonction définitionaléatoire() permet de décide dès le debut les 50 cases que l'IA attaquera, lIA et cIA corresponde ici à des listes comportant toute les coordonées, l et c, où l'IA pourra attaquer.
+      </p>
+      <p align="center"><img src="https://cdn.glitch.com/8313f79a-d2e4-49e2-a947-440d9453b1f2%2Fdefrandom.png?1557507447362" alt="defrandom" /></p>
+      <p>Sélection d'une valeur aléatoire pour a, ce qui permet de savoir quelle partie de la grille va étre attaquer.</p>
+      <p align="center"><img src="https://cdn.glitch.com/8313f79a-d2e4-49e2-a947-440d9453b1f2%2Fa.png?1557508028902" alt="a" /></p>
+      <p>Lorsque a=1 à gauche, et lorsque a=2 à droite:</p>
+      <p align="center"><img src="https://cdn.glitch.com/8313f79a-d2e4-49e2-a947-440d9453b1f2%2FGrille%20pour%20a%3D1.png?1557509322605" alt="Grille pour a=1" width="400"/>
+        <img src="https://cdn.glitch.com/8313f79a-d2e4-49e2-a947-440d9453b1f2%2FGrille%20pour%20a%3D2.png?1557509141421" alt="Grille pour a=2" width="400"/></p>
+      <p>
+        Lorsque l'IA touche enfin une cible, la variable ram passe a 1, ici ram correspond à la memoire, lorsque ram=1 au prochain tire l'IA tirera une case en dessous de la case toucher pour celà on mémorise les cordonnées
+        de la cible toucher dans les variables, raml et ramc et dans oraml et oramc (la différence réside dans le fait que raml et ramc vont changer à chaque tir suivant oraml et oramc nous permettera donc de les reinitialiser.
+      </p>
+      <p align="center"><img src="https://cdn.glitch.com/8313f79a-d2e4-49e2-a947-440d9453b1f2%2FtirIA%20ram%3D0.png?1557510128858" alt="TirIA pour ram=0" /></p>
+      <p>
+        Lorsque ram=1 le prochain tire s'effectue en dessous de la dernière case toucher.
+      </p>
+      <p align="center"><img src="https://cdn.glitch.com/8313f79a-d2e4-49e2-a947-440d9453b1f2%2FtirIA%20ram%3D1.png?1557510665522" alt="TirIA pour ram=1" /></p>
+      <p>
+        Aussi longtemps que le tir touchera l'IA continura de tirez une case en dessous de la dernière case toucher car ram restera égale à 1 cependant si le tir echoue ou n'est pas possible, ram passe à ram=2 et raml prend la
+        valeur de oraml.
+      </p>
+      <p align="center"><img src="https://cdn.glitch.com/8313f79a-d2e4-49e2-a947-440d9453b1f2%2FTirIA%20rater%20ram%3D1.png?1557510964374" alt="TirIA rater pour ram=1" /></p>
+      <p>
+        Lorsque ram=2 le fonctionnement reste le même sauf que l'IA tire au dessus de la dernière case toucher en recommencant par le point toucher à l'origine. Si l'IA rate sa cible ou ne peut plus attaquer au dessus 
+        alors raml prend la valeur de oraml et ram passe à 3.
+      </p>
+      <p align="center"><img src="https://cdn.glitch.com/8313f79a-d2e4-49e2-a947-440d9453b1f2%2FTirIA%20ram%3D2.png?1557511389499" alt="TirIA pour ram=2" /></p>
+      <p>
+        Lorsque ram=3 le fonctionnement reste le même sauf que l'IA tire à droite de la dernière case toucher en recommencant par le point toucher à l'origine. Si l'IA rate sa cible ou ne peut plus attaquer à droite 
+        alors ramc prend la valeur de oramc et ram passe à 4.
+      </p>
+      <p align="center"><img src="https://cdn.glitch.com/8313f79a-d2e4-49e2-a947-440d9453b1f2%2FTirIA%20ram%3D3.png?1557511628510" alt="TirIA pour ram=3" /></p>
+      <p>
+        Lorsque ram=4 le fonctionnement reste le même sauf que l'IA tire à gauche de la dernière case toucher en recommencant par le point toucher à l'origine.
+      </p>
+      <p align="center"><img src="https://cdn.glitch.com/8313f79a-d2e4-49e2-a947-440d9453b1f2%2FTirIA%20ram%3D4.png?1557512460583" alt="TirIA pour ram=4" /></p>
+      <p>
+        Maintenant que l'on est sur que l'IA va couler le bateau, il faut à present que l'on détecte lorsque le bateau coule pour que l'IA reparte sur un cycle normal. J'ai donc modifier le systeme de detection de "Toucher Couler"
+        pour que lorsque un bateau du joueur est couler par l'IA ram repasse à sa valeur d'origine, ram=0.
+      </p>
+      <p align="center"><img src="https://cdn.glitch.com/8313f79a-d2e4-49e2-a947-440d9453b1f2%2FReset%20de%20ram.png?1557512741941" alt="Reset de ram" /></p>
+    </article>    
+    </div>
+  </body>
+</html>

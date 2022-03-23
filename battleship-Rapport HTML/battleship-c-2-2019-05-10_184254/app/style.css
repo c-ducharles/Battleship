@@ -1,0 +1,226 @@
+.grid-container { /*disposition de la page en grid*/
+  display:grid;
+  grid-template-columns: auto 57em auto;
+  grid-template-rows: auto auto auto auto;
+  padding: 10px;
+}
+
+.all-header { /*position de la all-header en grid*/
+  grid-column: 1/4;
+}
+
+header {  /*position header*/
+  display: flex;
+  justify-content: space-between;
+  height: 276px;
+    
+}
+
+.sub-header {  /*position sub header*/
+  height: 70px;
+
+
+}
+
+.nav-left {
+  list-style-type: none;
+  margin-right: 0em;
+  padding: 0;
+  background-color:rgba(255, 255, 255, 0.7);
+  border-radius:1em;
+  position: fixed;
+  float:right;
+} 
+
+#logo1 {  /*position titre logo*/
+  margin-top: 1.5em;
+  margin-left: 4em;
+}
+
+#logo2 {  /*position titre logo*/
+  margin-top: 1em;
+  margin-right: 4em;
+}
+
+#titrelogo {  /*position titre logo*/
+  margin-top: 0.5em;
+ 
+}
+
+h1 {   /*police des titres*/
+  font-family: 'Rokkitt', serif;
+  font-size: 2.4em;
+}
+
+
+nav ul {   /*taille barre des boutons*/
+  list-style-type: none;
+  margin-top: -1.78em;
+  border-width:5px;
+
+
+}
+
+
+nav li {   /*taille barre des boutons*/
+  padding:0.3em;
+  padding-right: 3em;
+  padding-left: 3em;
+  border-width:3px;
+  border-style:solid;
+  border-color:rgba(255, 255, 255, 1);
+  background-color: #05535E;
+  border-radius: 1em;
+}
+
+nav a {  /*taille des boutons*/
+  font-size: 1.3em;
+  text-decoration: none;
+  color: white;
+
+}
+
+nav ul, nav li , nav a { /*position des boutons*/
+  display:flex;
+  justify-content: center;
+
+}
+.aside-left{  /*position de la aside-left en grid*/
+  grid-area:2/1/auto/2;
+
+
+}
+.aside-right{  /*position de la aside-right en grid*/
+  grid-area:2/3/auto/auto;
+}
+
+
+body {
+  color:black;
+  background-color:white;
+  background-image:url("https://cdn.glitch.com/8313f79a-d2e4-49e2-a947-440d9453b1f2%2F652232.jpg?1557057409047");
+  background-attachment:fixed;
+  background-repeat:no-repeat;
+  background-position:100% 0%;
+  background-size: 100%
+}
+
+
+.aside-left , .aside-right { /*couleur du background */
+  min-height: 30em;
+  
+}
+
+article {  /*position de l'article en grid+disposition du texte+padding haut et bas pour laisser de la place entre la barre de nav et le footer*/
+  grid-column: 2/3;
+  text-align: justify;
+  padding-bottom: 5em;
+  padding-top: 2em;
+  margin-left:-5em;
+  margin-right:-5em;
+  background-color: rgba(255, 255, 255, 0.7);
+  padding:2em;
+  margin-top:0em;
+  border-radius : 1em;
+}
+
+h2 {  /*disposition des titres h2*/
+  text-decoration: underline;
+  display:flex;
+  justify-content: center;
+  font-family: 'Roboto', sans-serif;
+}
+
+h3 {  /*disposition des titres h3 + police*/
+  font-family: 'Roboto', sans-serif;
+  font-size: 1.5em;
+}
+
+p, li {  /*police*/
+  font-family: 'Roboto', sans-serif;
+  font-size : 1em;
+}
+
+
+a { /*couleur des liens*/
+  color: black;
+}
+
+li {
+  margin:1em;
+}
+
+.intro-index { /*mise en page*/
+  margin-top: -1em;
+  font-size: 1.5em;
+  text-align: justify;
+  
+}
+
+footer {   /*placement footer*/
+  margin-top:-5em;
+  grid-area:3/1/4/4;
+  background-color: #000080;
+  color:white;
+  display: flex;
+  justify-content: space-around;
+}
+.footer-left { /*mise en page*/
+ text-align: center;
+}
+
+.footer-left li { /*mise en page*/
+  font-size:0.9em;
+  list-style:none;
+  margin-left: -2em;
+  margin-bottom: -0.3em;
+}
+
+.footer-left a { /*mise en page*/
+  color:white;
+  text-decoration: none;
+
+}
+
+.footer-right { /*mise en page*/
+  font-size: 1.1em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  text-align: center;
+  color: white;
+}
+
+.imagemoi { /*mise en page de l'image pseudo*/
+width: 160px;
+height: auto;
+margin-top: -1.5em;
+}
+
+.intro-index { /*mise en page*/
+  margin-top: -2em;
+}
+
+.image-moi-container { /*mise en page de l'image pseudo avec le texte*/
+  position: absolute;
+  top: 70%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.image-moi-container p {  /*spécification texte de l'image pseudo*/
+  margin-top: -2.9em;
+  color: black;
+  font-weight: 1000;
+
+}
+
+.aside-def { /*mise en page de la dééfinition*/
+  margin-top: 67em;
+  background-color: grey;
+  border-radius: 1em;
+  align-items: center;
+  text-align: center;
+  margin-left: 2em;
+}
